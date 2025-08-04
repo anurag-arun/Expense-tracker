@@ -1,0 +1,14 @@
+📊 Expense Summary Report
+Generated on: 2025-08-04 15:06:55
+
+Total Expense: Rs4400.00
+
+Expenses by Category:
+ - Food: Rs400.00
+ - Transport: Rs3000.00
+ - Trip: Rs1000.00
+
+Expenses by Month:
+ - 2010-12: Rs400.00
+ - 2019-08: Rs3000.00
+ - 2025-07: Rs1000.00

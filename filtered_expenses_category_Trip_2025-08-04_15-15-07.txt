@@ -1,0 +1,2 @@
+Filtered Expenses - category_Trip
+Date: 2025-07-21, Category: Trip, Amount: Rs1000.00
