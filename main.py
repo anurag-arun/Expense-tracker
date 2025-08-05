@@ -3,6 +3,9 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import sqlite3
 
+DB_FILE = 'expenses.db'
+
+
 def create_table():
     conn = sqlite3.connect('expenses.db')
     cursor = conn.cursor()
@@ -20,20 +23,20 @@ def create_table():
 def add_expense():
     date = input("Enter date (YYYY-MM-DD): ")
     category = input("Enter category: ")
-    try:
-        amount = float(input("Enter amount: Rs"))
-    except ValueError:
-        print("Invalid amount.")
-        return
+    amount_input = input("Enter amount (e.g. 300 or Rs300): ")
+    description = input("Enter description: ")  # ✅ Add this line
 
-    conn = sqlite3.connect('expenses.db')
+    # Optional: Clean the amount to extract only numbers
+    amount = float(''.join(filter(str.isdigit, amount_input)))
+
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute('INSERT INTO expenses (date, category, amount, description) VALUES (?, ?, ?, ?)',
-                   (date, category, amount))
+                   (date, category, amount, description))
     conn.commit()
     conn.close()
+    print("✅ Expense added successfully.\n")
 
-    print("✅ Expense added successfully.")
 
 
 def view_expenses():
@@ -224,6 +227,8 @@ def export_filtered_expenses():
     conn.close()
 
 
+
+
 def main_menu():
     create_table()  # ensure DB table exists before anything else
     while True:
@@ -291,6 +296,18 @@ def show_expense_chart():
         print("⚠️ 'expenses.csv' not found.")
     except Exception as e:
         print(f"⚠️ Error generating chart: {e}")
+def view_monthly_total():
+    month = input("Enter month (YYYY-MM): ")
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute("SELECT SUM(amount) FROM expenses WHERE strftime('%Y-%m', date) = ?", (month,))
+    total = cursor.fetchone()[0]
+    conn.close()
+    
+    if total:
+        print(f"\nTotal expenses for {month}: ₹{total}")
+    else:
+        print("\nNo expenses found for that month.")
 
 main_menu()
 

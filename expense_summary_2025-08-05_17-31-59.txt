@@ -1,0 +1,16 @@
+📊 Expense Summary Report
+Generated on: 2025-08-05 17:31:59
+
+Total Expense: Rs9080.00
+
+Expenses by Category:
+ - Birthday: Rs6000.00
+ - Food: Rs2040.00
+ - Trip: Rs650.00
+ - tri: Rs390.00
+
+Expenses by Month:
+ - 2002-12: Rs390.00
+ - 2004-08: Rs6000.00
+ - 2022-10: Rs2040.00
+ - 2023-12: Rs650.00
