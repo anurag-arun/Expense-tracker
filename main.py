@@ -28,7 +28,7 @@ def add_expense():
 
     conn = sqlite3.connect('expenses.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO expenses (date, category, amount) VALUES (?, ?, ?)',
+    cursor.execute('INSERT INTO expenses (date, category, amount, description) VALUES (?, ?, ?, ?)',
                    (date, category, amount))
     conn.commit()
     conn.close()
